@@ -1,0 +1,2 @@
+aiogram>=2.22<3
+selenium>=4.4<5
