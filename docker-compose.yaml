@@ -5,6 +5,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    command: python -m src.cmd.main
+    command: python3.9 -m src.cmd.main
     env_file:
       - .env
