@@ -13,7 +13,7 @@ class TwitterParser:
             self,
     ):
         self.options = FirefoxOptions()
-        # self.options.add_argument('--headless')
+        self.options.add_argument('--headless')
         self.driver = Firefox(
             executable_path=str(settings.DRIVER_PATH),
             options=self.options
