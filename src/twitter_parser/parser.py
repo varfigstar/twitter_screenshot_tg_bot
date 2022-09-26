@@ -44,10 +44,12 @@ class TwitterParser:
                     break
                 try:
                     self.driver.set_window_size(
-                        width=self.driver.get_window_size()["width"],
+                        width=elem.size["height"],
                         height=self.driver.get_window_size()["height"] + elem.size["height"]
                     )
-                    screenshots.append(elem.screenshot_as_png)
+                    photo = elem.screenshot_as_png
+                    if photo:
+                        screenshots.append(photo)
                 except:
                     ...
             if self.windows_number > 1:
