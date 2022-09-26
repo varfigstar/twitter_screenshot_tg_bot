@@ -13,19 +13,17 @@ class TwitterParser:
             self,
     ):
         self.options = FirefoxOptions()
-        self.options.add_argument('--headless')
+        # self.options.add_argument('--headless')
         self.driver = Firefox(
             executable_path=str(settings.DRIVER_PATH),
             options=self.options
         )
-        self.windows_number = 0
 
     def take_branch_screenshots(self, url, twit_depth=3) -> list[bytes]:
         print(f"Start task: {url} with depth: {twit_depth}")
         screenshots = []
         try:
             self.driver.get(url)
-            self.windows_number += 1
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((
                     By.XPATH,
@@ -52,9 +50,6 @@ class TwitterParser:
                         screenshots.append(photo)
                 except:
                     ...
-            if self.windows_number > 1:
-                self.driver.close()
-                self.windows_number -= 1
         except Exception as ex:
             print(ex)
         return screenshots
