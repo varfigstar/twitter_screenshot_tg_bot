@@ -27,8 +27,8 @@ class Form(StatesGroup):
     twit_depth = State()
 
 
-@dp.message_handler(commands=["start", "help"])
-async def send_welcome_message(message: types.Message):
+@dp.message_handler(commands=["start", "help"], state="*")
+async def send_welcome_message(message: types.Message, state: FSMContext):
     await Form.url.set()
     await message.reply(texts.WELCOME_MESSAGE)
 
